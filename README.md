@@ -17,9 +17,17 @@ meu-projeto/
 │   └── User.js
 ├── routes/                
 │   └── index.js
+├── public/
+|  └── css/
+│    └── style.css
+│  └── js/
+│    └── script.js
 ├── services/              
 │   └── userService.js
-├── assets/                
+├── assets/  
+├── views/  
+|  └── pages/    
+│     └── home.ejs        
 ├── scripts/              
 ├── styles/               
 ├── tests/                
@@ -30,7 +38,9 @@ meu-projeto/
 ├── package-lock.json      
 ├── package.json          
 ├── readme.md              
-├── server.js              
+├── server.js
+├── app.js       
+├── server.js       
 └── rest.http              
 
 ```
