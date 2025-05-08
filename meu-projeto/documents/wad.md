@@ -16,8 +16,11 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-*Preencha com até 300 palavras – sem necessidade de fonte.*
-*Descreva brevemente o sistema que você irá desenvolver.*
+Em um mundo cada vez mais digital, a organização de eventos também tem acompanhado essa transformação. Muitas instituições, empresas e grupos enfrentam dificuldades para gerenciar inscrições, controlar a participação do público e manter um registro claro dos dados dos inscritos. Diante desse cenário, surgiu a ideia de desenvolver uma plataforma online que facilite esse processo, tornando-o mais prático, acessível e eficiente tanto para os organizadores quanto para os participantes.
+
+O projeto propõe a criação de uma plataforma de eventos com foco na gestão de inscrições. Através dela, será possível cadastrar eventos, permitir que usuários se inscrevam, acompanhar listas de participantes e visualizar informações relevantes de maneira simples e organizada. A intenção é que a ferramenta ofereça uma experiência agradável e funcional para quem utiliza.
+
+Para isso, serão utilizadas tecnologias amplamente conhecidas no desenvolvimento de sites e aplicações web. O visual da plataforma será criado com HTML, CSS e JavaScript, garantindo uma interface clara, interativa e fácil de usar. Já a parte responsável por processar dados e manter o funcionamento da aplicação será feita com Node.js e Express.js, enquanto o armazenamento das informações ficará por conta de um banco de dados relacional (SQL).
 
 ---
 
