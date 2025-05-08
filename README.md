@@ -13,6 +13,7 @@ meu-projeto/
 │   └── database.js
 ├── controllers/           
 │   └── HomeController.js
+├── node_modules/ 
 ├── models/                
 │   └── User.js
 ├── routes/                
