@@ -1,10 +1,8 @@
 # Web Application Document - Projeto Individual - Módulo 2 - Inteli
 
-**_Os trechos em itálico servem apenas como guia para o preenchimento da seção. Por esse motivo, não devem fazer parte da documentação final._**
+## Event Listener
 
-## Nome do Projeto
-
-#### Autor do projeto
+#### Felipe Neves Teixeira da Silva
 
 ## Sumário
 
@@ -38,6 +36,18 @@
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
+
+![image](https://github.com/user-attachments/assets/eb1c273d-d7fd-4ae0-982f-d2301de019e1)
+
+Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscrições, foram criadas três tabelas principais:
+
+- users: armazena os dados dos usuários da plataforma, como nome, e-mail, senha e tipo de usuário (ex: participante ou organizador);
+
+- events: registra os eventos criados, incluindo título, descrição, data, local e organizador responsável;
+
+- inscricao: relaciona usuários a eventos, registrando cada inscrição com data e status.
+
+As tabelas estão interligadas por chaves estrangeiras para garantir a integridade dos dados e refletir corretamente os relacionamentos entre usuários, eventos e inscrições.
 
 *Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
 
