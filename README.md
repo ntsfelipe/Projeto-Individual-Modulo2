@@ -11,6 +11,8 @@ meu-projeto/
 │
 ├── config/               
 │   └── database.js
+├── documents/               
+│   └── wad.md
 ├── controllers/           
 │   └── HomeController.js
 ├── node_modules/ 
