@@ -37,6 +37,8 @@
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
 
+#### Modelo Relacional:
+
 ![image](https://github.com/user-attachments/assets/eb1c273d-d7fd-4ae0-982f-d2301de019e1)
 
 Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscrições, foram criadas três tabelas principais:
@@ -49,9 +51,46 @@ Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscri
 
 As tabelas estão interligadas por chaves estrangeiras para garantir a integridade dos dados e refletir corretamente os relacionamentos entre usuários, eventos e inscrições.
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+#### Modelo Físico: 
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+```sql
+CREATE TABLE events (
+  id INTEGER PRIMARY KEY,
+  titulo VARCHAR(100),
+  descricao TEXT,
+  data_inicio DATETIME,
+  data_fim DATETIME,
+  local VARCHAR,
+  vagas_totais INTEGER,
+  id_organizador INTEGER
+);
+
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  nome VARCHAR(100),
+  email VARCHAR(100) UNIQUE,
+  senha VARCHAR(100),
+  tipo_usuario ENUM,
+  data_criacao TIMESTAMP
+);
+
+CREATE TABLE inscricao (
+  id INTEGER PRIMARY KEY,
+  id_usuario INTEGER,
+  id_evento INTEGER,
+  data_inscricao DATETIME,
+  status ENUM
+);
+
+ALTER TABLE events
+ADD FOREIGN KEY (id_organizador) REFERENCES users(id);
+
+ALTER TABLE inscricao
+ADD FOREIGN KEY (id_usuario) REFERENCES users(id);
+
+ALTER TABLE inscricao
+ADD FOREIGN KEY (id_evento) REFERENCES events(id);
+```
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
