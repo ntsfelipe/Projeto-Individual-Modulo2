@@ -1,16 +1,26 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const home = require('./controllers/HomeController');
 
-// Middlewave para processar JSON
+// Configuração do EJS
+app.set('view engine', 'ejs');
+app.set('views', './views/pages');
+
+// Configuração de arquivos estáticos
+app.use(express.static('public'));
+
+// Middleware para processar JSON
 app.use(express.json());
 
 // Rotas
 const routes = require('./routes/index');
 app.use('/', routes);
 
-// Inicializa o servidor
+// Rota principal
+app.get('/', home.index);
 
+// Inicializa o servidor
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
 });

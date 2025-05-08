@@ -1,0 +1,22 @@
+.text {
+    color: red;
+    text-align: center;
+}
+
+.title {
+    color: blue;
+    text-align: center;
+}
+
+.button {
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
