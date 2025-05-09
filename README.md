@@ -47,3 +47,26 @@ meu-projeto/
 └── rest.http              
 
 ```
+
+## Como executar o projeto localmente:
+
+#### 1 - Instale uma IDE (ex: Visual Studio Code)
+
+#### 2 - Clone o repositório:
+```
+https://github.com/ntsfelipe/Projeto-Individual-Modulo2/
+```
+#### 3 - Abra o terminal, e instale as dependências:
+```
+npm init -y
+npm install 
+npm install express
+```
+#### 4 - Após isso, inicie o projeto com o comando:
+```
+npm start ou node server.js
+```
+#### 5 - Último passo, abra o servidor local no seguinte link:
+```
+localhost:3000
+```
