@@ -50,7 +50,7 @@ meu-projeto/
 
 ## Como executar o projeto localmente:
 
-#### 1 - Instale uma IDE (ex: Visual Studio Code)
+#### 1 - Utilize uma IDE (ex: Visual Studio Code)
 
 #### 2 - Clone o repositório:
 ```
@@ -70,3 +70,4 @@ npm start ou node server.js
 ```
 localhost:3000
 ```
+#### 6 - Pronto! Agora o site está rodando :)
