@@ -122,7 +122,7 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 
 *Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
 
-### 3.6. WebAPI e endpoints (Semana 05)
+### 3.6. WebAPI e endpoints
 
 ---
 
