@@ -124,7 +124,45 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+---
+
+### 🌐 Sobre a Web API
+
+Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API está concentrada na camada de **Controller**. A Web API expõe endpoints RESTful responsáveis por intermediar a comunicação entre o front-end e o banco de dados, permitindo operações como criação, leitura, atualização e exclusão de dados (CRUD). Toda a troca de informações ocorre via requisições HTTP, utilizando JSON como formato principal.
+
+---
+
+## 📂 Endpoints
+
+### 🏠 Home (`/home`)
+
+| Método | Rota      | Descrição                                              |
+|--------|-----------|---------------------------------------------------------|
+| GET    | `/home`   | Retorna informações públicas da página inicial (ex: Página inicial). |
+
+---
+
+### 📅 Eventos (`/events`)
+
+| Método | Rota              | Descrição                              |
+|--------|-------------------|-----------------------------------------|
+| GET    | `/events`         | Lista todos os eventos.                 | 
+| POST   | `/events`         | Cria um novo evento.                    |
+| PUT    | `/events/:id`     | Atualiza os dados de um evento.         |
+| DELETE | `/events/:id`     | Remove um evento do sistema.            |
+
+---
+
+### 👤 Usuários (`/users`)
+
+| Método | Rota            | Descrição                          |
+|--------|------------------|-------------------------------------|
+| GET    | `/users/`        | Retorna a página de usuário.        |
+
+<br>
+
+---
+
 
 ### 3.7 Interface e Navegação (Semana 07)
 
