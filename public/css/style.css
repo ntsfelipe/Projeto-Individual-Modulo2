@@ -1,15 +1,16 @@
 .text {
-    color: red;
+    color: black;
     text-align: center;
 }
 
 .title {
-    color: blue;
+    color: black;
     text-align: center;
+    margin-top: 20%
 }
 
 .button {
-    background-color: green;
+    background-color: black;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
@@ -19,4 +20,8 @@
 .container {
     display: flex;
     justify-content: center;
+}
+
+html {
+    background-color: #F5F5DC;
 }

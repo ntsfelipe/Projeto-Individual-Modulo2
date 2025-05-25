@@ -3,16 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teste</title>
+    <title>EventListener</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <h1 class="title">Teste</h1>
-    <p class="text">To testando apresentar um html no meu site, agora vou testar o css</p>
+    <h1 class="title">Bem vindo ao EventListener!</h1>
+    <p class="text">Seu site de organização de eventos!</p>
     <div class="container">
-        <button class="button">Clique aqui</button>
+        <button class="button">Clique aqui para se cadastrar</button>
     </div>
+        
+    <script>
 
-    <script src="/js/script.js"></script>
+        const button = document.querySelector('.button').addEventListener('click', () => {
+            window.location.href = '/user';
+    }); 
+
+    </script>
 </body>
 </html>
