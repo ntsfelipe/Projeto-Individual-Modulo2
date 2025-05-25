@@ -95,19 +95,56 @@ ALTER TABLE inscricao
 ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 ```
 
-### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+### 3.1.1 BD e Models 
 
-### 3.2. Arquitetura (Semana 5)
+Nesta etapa do projeto, foram implementados os **Models** responsáveis pela interação com o banco de dados PostgreSQL. Eles encapsulam a lógica de acesso e manipulação dos dados, facilitando a organização do sistema e garantindo a separação de responsabilidades entre as camadas da aplicação.
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
+#### Models implementados:
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+**Events Model (`models/Event.js`):**
+
+- Responsável por manipular a tabela `events` do banco de dados.
+- Implementa as operações CRUD:
+  - **criarEvents:** Insere um novo evento com os dados fornecidos.
+  - **listarEvents:** Retorna todos os eventos cadastrados.
+  - **editarEvents:** Atualiza os dados de um evento específico, identificado pelo `id`.
+  - **deletarEvent:** Remove um evento pelo seu `id`.
+
+---
+
+### 3.2. Arquitetura
+
+![Projeto Individual - Diagrama de arquitetura MVC drawio](https://github.com/user-attachments/assets/605992be-0b4f-4931-a180-47e29d46654b)
+
+
+**Fluxo de Dados e Explicações:**
+
+O diagrama apresentado ilustra a arquitetura MVC (Model-View-Controller) da aplicação, detalhando a interação entre o Cliente, o Servidor da Aplicação e o Servidor de Banco de Dados.
+
+1.  **Cliente:**
+    * O cliente (usuário) interage com a aplicação através de uma interface de usuário (front-end), que envia requisições ao servidor da aplicação.
+
+2.  **Servidor da Aplicação:**
+    * **Controllers:** Esta camada é o ponto de entrada para as requisições do cliente.
+        * Recebe as requisições, as interpreta e delega as ações apropriadas.
+        * No diagrama, temos um `Controllers` para `Events` que pode `Criar`, `Deletar`, `Listar` e `Editar` eventos.
+        * Os Controllers interagem com os Models para obter ou manipular dados e, em seguida, decidem qual View apresentar ao usuário.
+        * **Fluxo de Dados:** Uma requisição do Cliente chega a um Controller.
+
+    * **Models:** Esta camada encapsula a lógica de negócios e a interação com o banco de dados.
+        * Representa os dados e as regras de negócio da aplicação.
+        * No diagrama, temos Models para `Users` (com atributos como Id, nome, email, senha, tipo_usuario, data_criacao) e `Events` (com atributos como Id, titulo, descricao, data_inicio, data_fim, local, vagas_totais, id_organizador). Há também um Model `Inscricao` que relaciona `Id`, `id_usuario`, `id_evento`, `data_inscricao` e `status`.
+        * Os Models são responsáveis por persistir e recuperar dados do Servidor de Banco de Dados.
+        * **Fluxo de Dados:** Os Controllers acessam os Models para realizar operações de dados (leitura, escrita, atualização, exclusão). Os Models, por sua vez, se comunicam diretamente com o Servidor de Banco de Dados. Os dados são retornados do Banco de Dados para os Models e, em seguida, para os Controllers.
+
+    * **Views:** Esta camada é responsável por exibir a interface de usuário.
+        * Recebe dados dos Controllers e os formata para apresentação ao cliente.
+        * **Fluxo de Dados:** Após o Controller processar a requisição e interagir com o Model, ele seleciona a View apropriada e a preenche com os dados fornecidos pelo Model. A View é então renderizada e enviada de volta ao Cliente.
+
+3.  **Servidor Banco de Dados:**
+    * Armazena e gerencia os dados da aplicação.
+    * Os Models são a única camada que interage diretamente com o Servidor de Banco de Dados para operações de persistência e recuperação de dados.
+    * **Fluxo de Dados:** Os Models enviam consultas e recebem resultados do Servidor de Banco de Dados.
 
 ### 3.3. Wireframes (Semana 03 - opcional)
 
