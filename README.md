@@ -11,13 +11,22 @@ meu-projeto/
 │
 ├── config/               
 │   └── database.js
+├── migrations/
+│   └── migrate.js
+│   └── add_updated_at_to_events.js
 ├── documents/               
 │   └── wad.md
 ├── controllers/           
 │   └── HomeController.js
+│   └── EventsController.js
+│   └── UserController.js
+│   └── InscricoesController.js
 ├── node_modules/ 
 ├── models/                
 │   └── User.js
+│   └── Events.js
+│   └── Home.js
+│   └── Inscricoes.js
 ├── routes/                
 │   └── index.js
 ├── public/
@@ -31,6 +40,9 @@ meu-projeto/
 ├── views/  
 |  └── pages/    
 │     └── home.ejs        
+│     └── inscricoes.ejs
+│     └── events.ejs
+│     └── user.ejs
 ├── scripts/              
 ├── styles/               
 ├── tests/                
@@ -61,6 +73,8 @@ https://github.com/ntsfelipe/Projeto-Individual-Modulo2/
 npm init -y
 npm install 
 npm install express
+npm install dotenv
+npm install pg
 ```
 #### 4 - Após isso, inicie o projeto com o comando:
 ```
