@@ -7,18 +7,30 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "init-db": "node config/init-db.js",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "## Projeto Individual - Aplicação Web - Plataforma de eventos com gerenciamento de inscrições 🎭",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "nodemon": "^3.1.10",
     "pg": "^8.16.0",
     "postgres": "^3.4.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntsfelipe/Projeto-Individual-Modulo2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ntsfelipe/Projeto-Individual-Modulo2/issues"
+  },
+  "homepage": "https://github.com/ntsfelipe/Projeto-Individual-Modulo2#readme"
 }

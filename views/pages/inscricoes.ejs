@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/event.css">
+    <title>Gerenciamento de Inscrições</title>
+</head>
+<body>
+    <h1>Gerenciamento de Inscrições</h1>
+
+    <div class="nav-buttons">
+        <button onclick="window.location.href='/events'">Ver Eventos</button>
+        <button onclick="window.location.href='/user'">Área do Usuário</button>
+    </div>
+
+    <% if (locals.error) { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if (locals.success) { %>
+        <div class="success-message">
+            <%= success %>
+        </div>
+    <% } %>
+
+    <h2>Nova Inscrição</h2>
+    <form action="/inscricoes" method="post" class="event-form">
+        <% if (!locals.user) { %>
+            <input type="number" name="id_usuario" placeholder="ID do Usuário" required>
+        <% } %>
+        <select name="id_evento" required>
+            <option value="">Selecione um evento</option>
+            <% if (locals.events && Array.isArray(events) && events.length > 0) { %>
+                <% events.forEach(function(event) { %>
+                    <option value="<%= event.id %>"><%= event.titulo %> - <%= event.data_inicio %></option>
+                <% }); %>
+            <% } %>
+        </select>
+        <input type="submit" value="Confirmar Inscrição">
+    </form>
+
+    <h2>Inscrições Realizadas</h2>
+    <% if (locals.inscricoes && Array.isArray(inscricoes) && inscricoes.length > 0) { %>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Usuário</th>
+                <th>Evento</th>
+                <th>Data da Inscrição</th>
+                <th>Status</th>
+                <% if (locals.user && locals.user.tipo_usuario === 'admin') { %>
+                    <th>Ações</th>
+                <% } %>
+            </tr>
+            <% inscricoes.forEach(function(inscricao) { %>
+                <% if (locals.user && (locals.user.tipo_usuario === 'admin' || inscricao.id_usuario === locals.user.id)) { %>
+                    <tr>
+                        <td><%= inscricao.id %></td>
+                        <td>
+                            <% const usuario = users.find(u => u.id === inscricao.id_usuario) %>
+                            <%= usuario ? usuario.nome : 'Usuário ' + inscricao.id_usuario %>
+                        </td>
+                        <td>
+                            <% const evento = events.find(e => e.id === inscricao.id_evento) %>
+                            <%= evento ? evento.titulo : 'Evento ' + inscricao.id_evento %>
+                        </td>
+                        <td><%= inscricao.data_inscricao ? new Date(inscricao.data_inscricao).toLocaleString() : 'N/A' %></td>
+                        <td class="status-<%= inscricao.status?.toLowerCase() || 'pendente' %>">
+                            <%= inscricao.status || 'Pendente' %>
+                        </td>
+                        <% if (locals.user && locals.user.tipo_usuario === 'admin') { %>
+                            <td>
+                                <form action="/inscricoes/status" method="post" style="display: inline;">
+                                    <input type="hidden" name="id" value="<%= inscricao.id %>">
+                                    <select name="status" onchange="this.form.submit()">
+                                        <option value="pendente" <%= (inscricao.status === 'pendente' || !inscricao.status) ? 'selected' : '' %>>Pendente</option>
+                                        <option value="ativo" <%= inscricao.status === 'ativo' ? 'selected' : '' %>>Ativo</option>
+                                        <option value="expirada" <%= inscricao.status === 'expirada' ? 'selected' : '' %>>Expirada</option>
+                                    </select>
+                                </form>
+                            </td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p class="info-message">Nenhuma inscrição encontrada.</p>
+    <% } %>
+
+    <script>
+    // Adiciona confirmação antes de mudar o status
+    document.querySelectorAll('select[name="status"]').forEach(select => {
+        select.addEventListener('change', function(e) {
+            if (!confirm('Tem certeza que deseja alterar o status desta inscrição?')) {
+                e.preventDefault();
+                this.value = this.getAttribute('data-previous');
+                return false;
+            }
+            this.setAttribute('data-previous', this.value);
+        });
+        select.setAttribute('data-previous', select.value);
+    });
+    </script>
+</body>
+</html>

@@ -3,22 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EventListener</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/event.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Sistema de Eventos - Bem-vindo</title>
 </head>
 <body>
-    <h1 class="title">Bem vindo ao EventListener!</h1>
-    <p class="text">Seu site de organização de eventos!</p>
-    <div class="container">
-        <button class="button">Clique aqui para se cadastrar</button>
+    <div class="welcome-section">
+        <h1 class="welcome-title">Bem-vindo ao EventListener</h1>
+        <p class="welcome-text">
+            Gerencie seus eventos e inscrições de forma simples e eficiente.
+            Nossa plataforma oferece todas as ferramentas necessárias para criar,
+            organizar e acompanhar seus eventos.
+        </p>
+        <div class="nav-buttons">
+            <button onclick="window.location.href='/events'">
+                <i class="fas fa-calendar-alt"></i> Ver Eventos
+            </button>
+            <button onclick="window.location.href='/inscricoes'">
+                <i class="fas fa-ticket-alt"></i> Inscrições
+            </button>
+            <button onclick="window.location.href='/user'">
+                <i class="fas fa-user"></i> Área do Usuário
+            </button>
+        </div>
     </div>
-        
-    <script>
 
-        const button = document.querySelector('.button').addEventListener('click', () => {
-            window.location.href = '/user';
-    }); 
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-calendar-plus"></i>
+            </div>
+            <h3>Crie Eventos</h3>
+            <p>Organize eventos facilmente com todas as informações necessárias.</p>
+        </div>
 
-    </script>
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <h3>Gerencie Inscrições</h3>
+            <p>Acompanhe as inscrições e gerencie os participantes de forma eficiente.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+            </div>
+            <h3>Acompanhe o Progresso</h3>
+            <p>Visualize estatísticas e informações detalhadas sobre seus eventos.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+            <h3>Controle em Tempo Real</h3>
+            <p>Mantenha-se atualizado com informações em tempo real sobre seus eventos.</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
 </body>
 </html>

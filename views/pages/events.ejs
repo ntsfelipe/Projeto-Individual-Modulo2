@@ -3,44 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/css/event.css">
+    <title>Gerenciamento de Eventos</title>
 </head>
 <body>
+    <h1>Gerenciamento de Eventos</h1>
 
-    <h1>Página de eventos</h1>
+    <div class="nav-buttons">
+        <button onclick="window.location.href='/inscricoes'">Ver Inscrições</button>
+        <button onclick="window.location.href='/user'">Área do Usuário</button>
+    </div>
 
-    <h2>Listar eventos</h2>
+    <% if (locals.error) { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+    <% } %>
 
-    <form action="/events" method="get">
-        <input type="submit" value="Listar Eventos">
-    </form>
+    <% if (locals.success) { %>
+        <div class="success-message">
+            <%= success %>
+        </div>
+    <% } %>
 
-    <h2>Criar evento</h2>
-    
-    <form action="/events" method="post">
-        <input type="text" name="titulo" placeholder="Título">
-        <input type="text" name="descricao" placeholder="Descrição">
-        <input type="text" name="data_inicio" placeholder="Data">
-        <input type="text" name="local" placeholder="Local">
-        <input type="submit" value="Criar Evento">
-    </form>
-    
-    <h2>Editar evento</h2>
+    <h2>Lista de Eventos</h2>
+    <% if (events && events.length > 0) { %>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Data de Início</th>
+                <th>Local</th>
+                <th>Vagas</th>
+                <% if (locals.user && locals.user.tipo_usuario === 'admin') { %>
+                    <th>Ações</th>
+                <% } %>
+            </tr>
+            <% events.forEach(event => { %>
+                <tr>
+                    <td><%= event.id %></td>
+                    <td><%= event.titulo %></td>
+                    <td><%= event.descricao %></td>
+                    <td><%= new Date(event.data_inicio).toLocaleString() %></td>
+                    <td><%= event.local %></td>
+                    <td><%= event.vagas_totais %></td>
+                    <% if (locals.user && locals.user.tipo_usuario === 'admin') { %>
+                        <td>
+                            <button onclick="preencherFormularioEdicao('<%= event.id %>', '<%= event.titulo %>', '<%= event.descricao %>', '<%= event.data_inicio %>', '<%= event.local %>', '<%= event.vagas_totais %>')" class="edit-btn">Editar</button>
+                            <form action="/events/delete" method="post" style="display: inline;" onsubmit="return confirm('Tem certeza que deseja deletar este evento?');">
+                                <input type="hidden" name="id" value="<%= event.id %>">
+                                <input type="submit" value="Deletar" class="delete">
+                            </form>
+                        </td>
+                    <% } %>
+                </tr>
+            <% }); %>
+        </table>
+    <% } else { %>
+        <p class="info-message">Nenhum evento cadastrado.</p>
+    <% } %>
 
-    <form action="/events" method="put">
-        <input type="text" name="id" placeholder="ID">
-        <input type="text" name="titulo" placeholder="Título">
-        <input type="text" name="descricao" placeholder="Descrição">
-        <input type="text" name="data_inicio" placeholder="Data">
-        <input type="text" name="local" placeholder="Local">
-        <input type="submit" value="Editar Evento">
-    </form>
+    <% if (locals.user && locals.user.tipo_usuario === 'admin') { %>
+        <h2>Criar Novo Evento</h2>
+        <form action="/events" method="post" class="event-form">
+            <div class="form-group">
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Título do evento" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" name="descricao" placeholder="Descrição do evento" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="data_inicio">Data de Início:</label>
+                <input type="datetime-local" id="data_inicio" name="data_inicio" required>
+            </div>
+            <div class="form-group">
+                <label for="local">Local:</label>
+                <input type="text" id="local" name="local" placeholder="Local do evento" required>
+            </div>
+            <div class="form-group">
+                <label for="vagas_totais">Número de Vagas:</label>
+                <input type="number" id="vagas_totais" name="vagas_totais" min="1" placeholder="Número de vagas" required>
+            </div>
+            <input type="submit" value="Criar Evento">
+        </form>
+        
+        <h2>Editar Evento</h2>
+        <form action="/events/edit" method="post" class="event-form" id="editForm">
+            <input type="hidden" id="edit_id" name="id" required>
+            <div class="form-group">
+                <label for="edit_titulo">Título:</label>
+                <input type="text" id="edit_titulo" name="titulo" placeholder="Novo título">
+            </div>
+            <div class="form-group">
+                <label for="edit_descricao">Descrição:</label>
+                <textarea id="edit_descricao" name="descricao" placeholder="Nova descrição"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="edit_data_inicio">Data de Início:</label>
+                <input type="datetime-local" id="edit_data_inicio" name="data_inicio">
+            </div>
+            <div class="form-group">
+                <label for="edit_local">Local:</label>
+                <input type="text" id="edit_local" name="local" placeholder="Novo local">
+            </div>
+            <div class="form-group">
+                <label for="edit_vagas_totais">Número de Vagas:</label>
+                <input type="number" id="edit_vagas_totais" name="vagas_totais" min="1" placeholder="Novo número de vagas">
+            </div>
+            <input type="submit" value="Atualizar Evento">
+        </form>
+    <% } else { %>
+        <div class="info-message" style="margin-top: 20px;">
+            Para se inscrever em um evento, acesse a página de <a href="/inscricoes">Inscrições</a>.
+        </div>
+    <% } %>
 
-    <h2>Deletar evento</h2>
-
-    <form action="/events" method="delete">
-        <input type="text" name="id" placeholder="ID">
-        <input type="submit" value="Deletar Evento">
-    </form>
+    <script>
+    function preencherFormularioEdicao(id, titulo, descricao, data_inicio, local, vagas_totais) {
+        document.getElementById('edit_id').value = id;
+        document.getElementById('edit_titulo').value = titulo;
+        document.getElementById('edit_descricao').value = descricao;
+        // Formata a data para o formato aceito pelo input datetime-local
+        const data = new Date(data_inicio);
+        const dataFormatada = data.toISOString().slice(0, 16);
+        document.getElementById('edit_data_inicio').value = dataFormatada;
+        document.getElementById('edit_local').value = local;
+        document.getElementById('edit_vagas_totais').value = vagas_totais;
+        
+        // Scroll para o formulário de edição
+        document.getElementById('editForm').scrollIntoView({ behavior: 'smooth' });
+    }
+    </script>
 </body>
 </html>

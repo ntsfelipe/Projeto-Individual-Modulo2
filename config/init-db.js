@@ -13,14 +13,15 @@ const initDb = async () => {
   try {
     await client.connect();
 
-    await client.query(`
+    await client.query(` 
+      DROP TABLE IF EXISTS inscricao;
+      DROP TABLE IF EXISTS events;
+      DROP TABLE IF EXISTS users;
+
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
         nome VARCHAR(100),
-        email VARCHAR(100) UNIQUE,
-        senha VARCHAR(100),
-        tipo_usuario VARCHAR(50),
-        data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        tipo_usuario VARCHAR(50)
       );
     `);
 

@@ -3,10 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Área do Usuário</title>
+    <link rel="stylesheet" href="/css/event.css">
 </head>
 <body>
-    <h1>Página de usuário</h1>
-    <button onclick="window.location.href='/events'">Eventos</button>
+    <h1 class="insira-usuario">Área do Usuário</h1>
+
+    <div class="nav-buttons">
+        <button onclick="window.location.href='/'">Início</button>
+        <button onclick="window.location.href='/events'">Eventos</button>
+    </div>
+
+    <% if (locals.error) { %>
+        <div class="error-message">
+            <%= error %>
+        </div>
+    <% } %>
+
+    <% if (locals.success) { %>
+        <div class="success-message">
+            <%= success %>
+        </div>
+    <% } %>
+
+    <% if (!locals.user) { %>
+        <div class="auth-container">
+            <!-- Formulário de Login -->
+            <div class="auth-form">
+                <h2>Entrar como Usuário Existente</h2>
+                <form action="/user/login" method="post">
+                    <select name="nome" required>
+                        <option value="">Selecione um usuário</option>
+                        <% if (locals.users && users.length > 0) { %>
+                            <% users.forEach(function(user) { %>
+                                <option value="<%= user.nome %>">
+                                    <%= user.nome %> (<%= user.tipo_usuario %>)
+                                </option>
+                            <% }); %>
+                        <% } %>
+                    </select>
+                    <input type="submit" value="Entrar">
+                </form>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div class="auth-form">
+                <h2>Criar Novo Usuário</h2>
+                <form action="/user" method="post" class="form-usuario">
+                    <input type="text" name="nome" placeholder="Nome do usuário" required>
+                    <select name="tipo_usuario" required>
+                        <option value="">Selecione o tipo</option>
+                        <option value="admin">Administrador</option>
+                        <option value="user">Usuário</option>
+                    </select>
+                    <input type="submit" value="Cadastrar">
+                </form>
+            </div>
+        </div>
+    <% } else { %>
+        <div class="user-info">
+            <h2>Usuário Atual</h2>
+            <p>Nome: <%= user.nome %></p>
+            <p>Tipo: <%= user.tipo_usuario %></p>
+            <button onclick="window.location.href='/user/logout'" class="logout-btn">Sair</button>
+        </div>
+    <% } %>
+
+    <% if (locals.users && users.length > 0) { %>
+        <h2>Usuários Cadastrados</h2>
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Tipo</th>
+            </tr>
+            <% users.forEach(function(user) { %>
+                <tr>
+                    <td><%= user.nome %></td>
+                    <td><%= user.tipo_usuario %></td>
+                </tr>
+            <% }); %>
+        </table>
+    <% } %>
 </body>
 </html>
