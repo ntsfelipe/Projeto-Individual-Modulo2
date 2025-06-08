@@ -42,8 +42,12 @@ Para isso, serão utilizadas tecnologias amplamente conhecidas no desenvolviment
 
 #### Modelo Relacional:
 
-![image](https://github.com/user-attachments/assets/eb1c273d-d7fd-4ae0-982f-d2301de019e1)
+<div align="center">
+<sub>Figura 1 - Diagrama do Model Relacional</sub>
 
+![image](https://github.com/user-attachments/assets/eb1c273d-d7fd-4ae0-982f-d2301de019e1)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
 Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscrições, foram criadas três tabelas principais:
 
 - users: armazena os dados dos usuários da plataforma, como nome, e-mail, senha e tipo de usuário (ex: participante ou organizador);
@@ -114,9 +118,12 @@ Nesta etapa do projeto, foram implementados os **Models** responsáveis pela int
 
 ### 3.2. Arquitetura
 
-<sub> Figura 1 - Diagrama de Arquitetura MVC</sub>
+<div align="center">
+<sub> Figura 2 - Diagrama de Arquitetura MVC</sub>
+
 ![Projeto Individual - Diagrama de arquitetura MVC drawio](https://github.com/user-attachments/assets/605992be-0b4f-4931-a180-47e29d46654b)
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
 
 **Fluxo de Dados e Explicações:**
 
@@ -206,7 +213,7 @@ Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API
 
 Durante essa etapa de desenvolvimento da aplicação web, foi feita a estilização dos layouts e funcionalidades do sistema com foco na usabilidade. A seguir estão algumas prints das páginas da aplicação:
 
-<sub>Figura 2 - Página de início Event Listener</sub>
+<sub>Figura 3 - Página de início Event Listener</sub>
 ![Página de início Event Listener](https://github.com/user-attachments/assets/3f50ba5b-7cc6-48fe-aa5e-1ff52e5fe342)
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
 
