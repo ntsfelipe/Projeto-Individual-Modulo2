@@ -114,8 +114,9 @@ Nesta etapa do projeto, foram implementados os **Models** responsáveis pela int
 
 ### 3.2. Arquitetura
 
+<sub> Figura 1 - Diagrama de Arquitetura MVC</sub>
 ![Projeto Individual - Diagrama de arquitetura MVC drawio](https://github.com/user-attachments/assets/605992be-0b4f-4931-a180-47e29d46654b)
-
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
 
 **Fluxo de Dados e Explicações:**
 
@@ -202,6 +203,12 @@ Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API
 
 
 ### 3.7 Interface e Navegação (Semana 07)
+
+Durante essa etapa de desenvolvimento da aplicação web, foi feita a estilização dos layouts e funcionalidades do sistema com foco na usabilidade. A seguir estão algumas prints das páginas da aplicação:
+
+<sub>Figura 2 - Página de início Event Listener</sub>
+![Página de início Event Listener](https://github.com/user-attachments/assets/3f50ba5b-7cc6-48fe-aa5e-1ff52e5fe342)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
 
 *Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
 
