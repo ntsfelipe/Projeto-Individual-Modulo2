@@ -257,7 +257,7 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
 </div>
 
-Essa estilização das páginas foi feita com CSS. É possível observar isso através das prints do código abaixo:
+&nbsp;&nbsp;&nbsp;&nbsp;Essa estilização das páginas foi feita com CSS. É possível observar isso através das prints do código abaixo:
 
 <div align="center">
 <sub>Figura 8 - Pasta de arquivos CSS</sub>
