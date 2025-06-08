@@ -16,11 +16,11 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-Em um mundo cada vez mais digital, a organização de eventos também tem acompanhado essa transformação. Muitas instituições, empresas e grupos enfrentam dificuldades para gerenciar inscrições, controlar a participação do público e manter um registro claro dos dados dos inscritos. A partir disso, surgiu a ideia de desenvolver uma plataforma online que facilite esse processo, tornando-o mais prático, acessível e eficiente tanto para os organizadores quanto para os participantes.
+&nbsp;&nbsp;&nbsp;&nbsp;Em um mundo cada vez mais digital, a organização de eventos também tem acompanhado essa transformação. Muitas instituições, empresas e grupos enfrentam dificuldades para gerenciar inscrições, controlar a participação do público e manter um registro claro dos dados dos inscritos. A partir disso, surgiu a ideia de desenvolver uma plataforma online que facilite esse processo, tornando-o mais prático, acessível e eficiente tanto para os organizadores quanto para os participantes.
 
-O projeto propõe a criação de uma plataforma de eventos com foco na gestão de inscrições. Através dela, será possível cadastrar eventos, permitir que usuários se inscrevam, acompanhar listas de participantes e visualizar informações relevantes de maneira simples e organizada. A intenção é que a ferramenta ofereça uma experiência agradável e funcional para quem utiliza.
+&nbsp;&nbsp;&nbsp;&nbsp;O projeto propõe a criação de uma plataforma de eventos com foco na gestão de inscrições. Através dela, será possível cadastrar eventos, permitir que usuários se inscrevam, acompanhar listas de participantes e visualizar informações relevantes de maneira simples e organizada. A intenção é que a ferramenta ofereça uma experiência agradável e funcional para quem utiliza.
 
-Para isso, serão utilizadas tecnologias amplamente conhecidas no desenvolvimento de sites e aplicações web. O visual da plataforma será criado com HTML, CSS e JavaScript, garantindo uma interface clara, interativa e fácil de usar. Já a parte responsável por processar dados e manter o funcionamento da aplicação será feita com Node.js e Express.js, enquanto o armazenamento das informações ficará por conta de um banco de dados relacional (SQL).
+&nbsp;&nbsp;&nbsp;&nbsp;Para isso, serão utilizadas tecnologias amplamente conhecidas no desenvolvimento de sites e aplicações web. O visual da plataforma será criado com HTML, CSS e JavaScript, garantindo uma interface clara, interativa e fácil de usar. Já a parte responsável por processar dados e manter o funcionamento da aplicação será feita com Node.js e Express.js, enquanto o armazenamento das informações ficará por conta de um banco de dados relacional (SQL).
 
 ---
 
@@ -48,7 +48,7 @@ Para isso, serão utilizadas tecnologias amplamente conhecidas no desenvolviment
 ![image](https://github.com/user-attachments/assets/eb1c273d-d7fd-4ae0-982f-d2301de019e1)
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
 </div>
-Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscrições, foram criadas três tabelas principais:
+&nbsp;&nbsp;&nbsp;&nbsp;Como a aplicação tem o objetivo de gerenciar eventos e suas respectivas inscrições, foram criadas três tabelas principais:
 
 - users: armazena os dados dos usuários da plataforma, como nome, e-mail, senha e tipo de usuário (ex: participante ou organizador);
 
@@ -101,7 +101,7 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 
 ### 3.1.1 BD e Models 
 
-Nesta etapa do projeto, foram implementados os **Models** responsáveis pela interação com o banco de dados PostgreSQL. Eles encapsulam a lógica de acesso e manipulação dos dados, facilitando a organização do sistema e garantindo a separação de responsabilidades entre as camadas da aplicação.
+&nbsp;&nbsp;&nbsp;&nbsp;Nesta etapa do projeto, foram implementados os **Models** responsáveis pela interação com o banco de dados PostgreSQL. Eles encapsulam a lógica de acesso e manipulação dos dados, facilitando a organização do sistema e garantindo a separação de responsabilidades entre as camadas da aplicação.
 
 #### Models implementados:
 
@@ -127,7 +127,7 @@ Nesta etapa do projeto, foram implementados os **Models** responsáveis pela int
 
 **Fluxo de Dados e Explicações:**
 
-O diagrama apresentado ilustra a arquitetura MVC (Model-View-Controller) da aplicação, detalhando a interação entre o Cliente, o Servidor da Aplicação e o Servidor de Banco de Dados.
+&nbsp;&nbsp;&nbsp;&nbsp;O diagrama apresentado ilustra a arquitetura MVC (Model-View-Controller) da aplicação, detalhando a interação entre o Cliente, o Servidor da Aplicação e o Servidor de Banco de Dados.
 
 1.  **Cliente:**
     * O cliente (usuário) interage com a aplicação através de uma interface de usuário (front-end), que envia requisições ao servidor da aplicação.
@@ -173,7 +173,7 @@ O diagrama apresentado ilustra a arquitetura MVC (Model-View-Controller) da apli
 
 ### 🌐 Sobre a Web API
 
-Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API está concentrada na camada de **Controller**. A Web API expõe endpoints RESTful responsáveis por intermediar a comunicação entre o front-end e o banco de dados, permitindo operações como criação, leitura, atualização e exclusão de dados (CRUD). Toda a troca de informações ocorre via requisições HTTP, utilizando JSON como formato principal.
+&nbsp;&nbsp;&nbsp;&nbsp;Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API está concentrada na camada de **Controller**. A Web API expõe endpoints RESTful responsáveis por intermediar a comunicação entre o front-end e o banco de dados, permitindo operações como criação, leitura, atualização e exclusão de dados (CRUD). Toda a troca de informações ocorre via requisições HTTP, utilizando JSON como formato principal.
 
 ---
 
@@ -211,13 +211,68 @@ Esta aplicação segue o padrão MVC (Model–View–Controller), onde a Web API
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-Durante essa etapa de desenvolvimento da aplicação web, foi feita a estilização dos layouts e funcionalidades do sistema com foco na usabilidade. A seguir estão algumas prints das páginas da aplicação:
+&nbsp;&nbsp;&nbsp;&nbsp;Durante essa etapa de desenvolvimento da aplicação web, foi feita a estilização dos layouts e funcionalidades do sistema com foco na usabilidade. A seguir estão algumas prints das páginas da aplicação:
 
+<div align="center">
 <sub>Figura 3 - Página de início Event Listener</sub>
+
 ![Página de início Event Listener](https://github.com/user-attachments/assets/3f50ba5b-7cc6-48fe-aa5e-1ff52e5fe342)
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+<div align="center">
+<sub>Figura 4 - Página de eventos Event Listener</sub>
+
+![Página de eventos Event Listener](https://github.com/user-attachments/assets/b90f0485-6784-4066-b95c-147bddd45946)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura 5 - Página de área do usuário Event Listener</sub>
+
+![Página de usuários Event Listener](https://github.com/user-attachments/assets/0ea2e5aa-5aaa-4790-833c-5aba7d5fe1bd)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Na área de usuários, será possível cadastrar novos usuários (admins ou usuários comuns), e escolher com qual você quer acessar a plataforma. Se você for um usuário comum, terá acesso à área de eventos e inscrições para poder se inscrever nos eventos. Caso seja admin, será possível editar, adicionar e excluir eventos. 
+
+<div align="center">
+<sub>Figura 6 - Página de gerenciamento de eventos na visão do usuário</sub>
+
+![Página gerenciamento de eventos Event Listener](https://github.com/user-attachments/assets/51dec84b-4e5c-43ac-aaab-ca35233e5e9d)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura 7 - Página de inscrições na visão do usuário</sub>
+
+![Página de inscrições usuário Event Listener](https://github.com/user-attachments/assets/90ca684b-8a9a-4d68-9283-09a518b178d3)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
+
+<div align="center">
+<sub>Figura 7 - Página de gerenciamento de eventos na visão do admin</sub>
+
+![Página de eventos admin Event Listener](https://github.com/user-attachments/assets/e99e371f-587f-404b-b3ba-a5eaa2822b5b)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
+
+Essa estilização das páginas foi feita com CSS. É possível observar isso através das prints do código abaixo:
+
+<div align="center">
+<sub>Figura 8 - Pasta de arquivos CSS</sub>
+
+![image](https://github.com/user-attachments/assets/9e556d72-11ba-476a-bf62-0c509cb4aeba)
+
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+
+
+<div align="center"> 
+<sub>Figura 9 - Print de parte do código css de estilização da aplicação</sub>
+
+![image](https://github.com/user-attachments/assets/dc0074c7-36cc-4f8c-9d54-a69787447a5a)
+<sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
 
 ---
 
