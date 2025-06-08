@@ -73,6 +73,7 @@ https://github.com/ntsfelipe/Projeto-Individual-Modulo2/
 npm init -y
 npm install 
 npm install express
+npm install express-session
 npm install dotenv
 npm install pg
 ```
