@@ -71,7 +71,7 @@ https://github.com/ntsfelipe/Projeto-Individual-Modulo2/
 #### 3 - Abra o terminal, e instale as dependências:
 ```
 npm init -y
-npm install 
+npm install cors
 npm install express
 npm install express-session
 npm install dotenv
