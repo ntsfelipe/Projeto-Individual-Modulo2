@@ -40,14 +40,14 @@ const initDb = async () => {
     `);
 
     await client.query(`
-      CREATE TABLE IF NOT EXISTS inscricao (
+  CREATE TABLE IF NOT EXISTS inscricao (
         id SERIAL PRIMARY KEY,
         id_usuario INTEGER,
         id_evento INTEGER,
         data_inscricao TIMESTAMP,
         status VARCHAR(50),
         FOREIGN KEY (id_usuario) REFERENCES users(id),
-        FOREIGN KEY (id_evento) REFERENCES events(id)
+        FOREIGN KEY (id_evento) REFERENCES events(id) ON DELETE CASCADE
       );
     `);
 
