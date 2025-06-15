@@ -14,7 +14,7 @@
 
 <br>
 
-## <a name="c1"></a>1. Introdução (Semana 01)
+## <a name="c1"></a>1. Introdução
 
 &nbsp;&nbsp;&nbsp;&nbsp;Em um mundo cada vez mais digital, a organização de eventos também tem acompanhado essa transformação. Muitas instituições, empresas e grupos enfrentam dificuldades para gerenciar inscrições, controlar a participação do público e manter um registro claro dos dados dos inscritos. A partir disso, surgiu a ideia de desenvolver uma plataforma online que facilite esse processo, tornando-o mais prático, acessível e eficiente tanto para os organizadores quanto para os participantes.
 
@@ -24,21 +24,9 @@
 
 ---
 
-## <a name="c2"></a>2. Visão Geral da Aplicação Web
-
-### 2.1. Personas (Semana 01 - opcional)
-
-*Posicione aqui sua(s) Persona(s) em forma de texto markdown com imagens, ou como imagem de template preenchido. Atualize esta seção ao longo do módulo se necessário.*
-
-### 2.2. User Stories (Semana 01 - opcional)
-
-*Posicione aqui a lista de User Stories levantadas para o projeto. Siga o template de User Stories e utilize a referência USXX para numeração (US01, US02, US03, ...). Indique todas as User Stories mapeadas, mesmo aquelas que não forem implementadas ao longo do projeto. Não se esqueça de explicar o INVEST de 1 User Storie prioritária.*
-
----
-
 ## <a name="c3"></a>3. Projeto da Aplicação Web
 
-### 3.1. Modelagem do banco de dados  (Semana 3)
+### 3.1. Modelagem do banco de dados
 
 #### Modelo Relacional:
 
@@ -61,42 +49,39 @@ As tabelas estão interligadas por chaves estrangeiras para garantir a integrida
 #### Modelo Físico: 
 
 ```sql
-CREATE TABLE events (
-  id INTEGER PRIMARY KEY,
-  titulo VARCHAR(100),
-  descricao TEXT,
-  data_inicio DATETIME,
-  data_fim DATETIME,
-  local VARCHAR,
-  vagas_totais INTEGER,
-  id_organizador INTEGER
-);
+  CREATE TABLE IF NOT EXISTS users (
+        id SERIAL PRIMARY KEY,
+        nome VARCHAR(100),
+        email VARCHAR(100) UNIQUE,
+        senha VARCHAR(100),
+        tipo_usuario text default 'Selecione uma opção' CHECK (tipo_usuario IN ('Selecione uma opção','organizador', 'usuário')),
+        data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
 
-CREATE TABLE users (
-  id INTEGER PRIMARY KEY,
-  nome VARCHAR(100),
-  email VARCHAR(100) UNIQUE,
-  senha VARCHAR(100),
-  tipo_usuario ENUM,
-  data_criacao TIMESTAMP
-);
+  CREATE TABLE IF NOT EXISTS events (
+        id SERIAL PRIMARY KEY,
+        titulo VARCHAR(100),
+        descricao TEXT,
+        data_inicio TIMESTAMP,
+        data_fim TIMESTAMP,
+        local VARCHAR(255),
+        vagas_totais INTEGER,
+        id_organizador INTEGER,
+        FOREIGN KEY (id_organizador) REFERENCES users(id)
+      );
 
-CREATE TABLE inscricao (
-  id INTEGER PRIMARY KEY,
-  id_usuario INTEGER,
-  id_evento INTEGER,
-  data_inscricao DATETIME,
-  status ENUM
-);
+  CREATE TABLE IF NOT EXISTS inscricao (
+        id SERIAL PRIMARY KEY,
+        id_usuario INTEGER,
+        id_evento INTEGER,
+        data_inscricao TIMESTAMP,
+        status VARCHAR(50),
+        FOREIGN KEY (id_usuario) REFERENCES users(id),
+        FOREIGN KEY (id_evento) REFERENCES events(id) ON DELETE CASCADE
+      );
 
-ALTER TABLE events
-ADD FOREIGN KEY (id_organizador) REFERENCES users(id);
 
-ALTER TABLE inscricao
-ADD FOREIGN KEY (id_usuario) REFERENCES users(id);
 
-ALTER TABLE inscricao
-ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 ```
 
 ### 3.1.1 BD e Models 
@@ -154,22 +139,9 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
     * Os Models são a única camada que interage diretamente com o Servidor de Banco de Dados para operações de persistência e recuperação de dados.
     * **Fluxo de Dados:** Os Models enviam consultas e recebem resultados do Servidor de Banco de Dados.
 
-### 3.3. Wireframes (Semana 03 - opcional)
-
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
-
-### 3.4. Guia de estilos (Semana 05 - opcional)
-
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
-
-
-### 3.5. Protótipo de alta fidelidade (Semana 05 - opcional)
-
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+---
 
 ### 3.6. WebAPI e endpoints
-
----
 
 ### 🌐 Sobre a Web API
 
@@ -209,7 +181,7 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 ---
 
 
-### 3.7 Interface e Navegação (Semana 07)
+### 3.7 Interface e Navegação
 
 &nbsp;&nbsp;&nbsp;&nbsp;Durante essa etapa de desenvolvimento da aplicação web, foi feita a estilização dos layouts e funcionalidades do sistema com foco na usabilidade. A seguir estão algumas prints das páginas da aplicação:
 
@@ -265,6 +237,7 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 ![image](https://github.com/user-attachments/assets/9e556d72-11ba-476a-bf62-0c509cb4aeba)
 
 <sup>Fonte: Material produzido pelo autor (2025)</sup>
+</div>
 
 
 <div align="center"> 
@@ -276,23 +249,100 @@ ADD FOREIGN KEY (id_evento) REFERENCES events(id);
 
 ---
 
-## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
+## <a name="c4"></a>4. Desenvolvimento da Aplicação Web 
 
-### 4.1 Demonstração do Sistema Web (Semana 8)
+### 4.1 Demonstração do Sistema Web 
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+#### <a href="https://youtu.be/PHm7XUMGOG4">Clique aqui para assistir ao vídeo de demonstração da aplicação WEB</a>
 
-### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
+&nbsp;&nbsp;&nbsp;&nbsp;A aplicação Event Listener foi desenvolvida com o objetivo de facilitar o gerenciamento de eventos e inscrições. Durante o desenvolvimento, foram implementadas diversas funcionalidades essenciais para atender tanto os organizadores quanto os participantes de eventos.
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+#### Funcionalidades desenvolvidas:
 
+#### 👤 Cadastro e Login de Usuários
+&nbsp;&nbsp;&nbsp;&nbsp;Implementação de diferentes perfis: usuário comum e admin.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Armazenamento seguro de informações como nome, e-mail, senha e tipo de usuário.
+
+---
+
+#### 📅 Gestão de Eventos
+&nbsp;&nbsp;&nbsp;&nbsp;Admins podem:
+
+&nbsp;&nbsp;&nbsp;&nbsp;Criar novos eventos com título, descrição, data, local e número de vagas.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Editar ou deletar eventos existentes.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Os dados são persistidos no banco de dados PostgreSQL via API RESTful com Node.js e Express.
+
+---
+
+#### ✅ Inscrição em Eventos
+&nbsp;&nbsp;&nbsp;&nbsp;Usuários comuns podem se inscrever em eventos disponíveis com apenas um clique.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A inscrição é registrada com data e status, facilitando o controle posterior.
+
+---
+
+#### 🔎 Visualização de Eventos
+&nbsp;&nbsp;&nbsp;&nbsp;Página com listagem de todos os eventos disponíveis.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Exibição de detalhes do evento como local, data e vagas restantes.
+
+---
+### 4.2 Conclusões e Trabalhos Futuros
+
+#### ✅ Pontos Fortes:
+&nbsp;&nbsp;&nbsp;&nbsp;Arquitetura organizada (MVC): facilitou a manutenção e evolução do código.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Funcionalidades completas para um sistema básico de eventos: cadastro, autenticação, inscrição, CRUD de eventos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Integração com banco de dados PostgreSQL e uso eficiente de chaves estrangeiras para manter integridade relacional.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Interface intuitiva, com diferenciação clara entre as funcionalidades disponíveis para usuários comuns e administradores.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Aplicação construída com tecnologias amplamente utilizadas no mercado, como Node.js, Express e SQL.
+
+--- 
+
+#### ⚠️ Pontos a Melhorar:
+&nbsp;&nbsp;&nbsp;&nbsp;Validação de formulários mais robusta no front e back-end.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Melhorar a responsividade da interface para telas menores (celulares).
+
+&nbsp;&nbsp;&nbsp;&nbsp;Implementar mensagens de feedback ao usuário mais detalhadas (ex: após uma inscrição ou exclusão de evento).
+
+&nbsp;&nbsp;&nbsp;&nbsp;Criar sistema de autenticação com token JWT e proteção de rotas (atualmente sem login real).
+
+---
+
+#### 💡 Trabalhos Futuros e Melhorias Possíveis:
+&nbsp;&nbsp;&nbsp;&nbsp;Implementar autenticação completa com login, logout e recuperação de senha.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Adicionar painel de estatísticas para organizadores (quantidade de inscritos por evento, taxa de ocupação, etc.).
+
+&nbsp;&nbsp;&nbsp;&nbsp;Permitir upload de imagens para os eventos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Criar sistema de notificações por e-mail para usuários inscritos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Incluir filtros e buscas por evento, data ou local.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Tornar o sistema responsivo para uso em dispositivos móveis.
 
 
 ## <a name="c5"></a>5. Referências
 
-_Incluir as principais referências de seu projeto, para que o leitor possa consultar caso ele se interessar em aprofundar._<br>
+<a href="https://blog.geekhunter.com.br/criar-crud-node-js/">CRUD completo com NodeJS - Geek Hunter</a>
+
+<a href="https://nodejs.org/en/docs">Documentação oficial do Node.js</a>
+
+<a href="https://expressjs.com/pt-br/">Documentação oficial do Express.js</a>
+
+<a href="https://www.postgresql.org/docs/">Documentação oficial do PostgreSQL</a>
+
+<a href="https://www.npmjs.com/package/express-session">Documentação oficial do express-session</a>
+
+<a href="https://www.npmjs.com/package/cors">Documentação oficial do cors</a>
 
 ---
 ---
